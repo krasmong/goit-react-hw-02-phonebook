@@ -8,7 +8,6 @@ class App extends Component {
   // formSubmitHendler = (data) => {
   //   console.log(data);
   //   const myContacts = {
-
   //     name: data.name,
   //     number: data.number,
   //   };
@@ -44,8 +43,10 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(`handleSubmit: ${this.state.name}`);
-    this.props.OnSaveContacts(this.state);
+    console.log(`handleSubmit: ${this.state.name}`);
+
+    this.props.onSubmit(this.state.contacts);
+    // this.props.OnSaveContacts(this.state.name);
     this.reset();
   };
 
@@ -53,9 +54,17 @@ class App extends Component {
     this.setState({ name: '', number: '' });
   };
 
-  // ==========================  ContactForm ====================
+  // ==========================  ContactForm  ===============================
+
+  // ==========================  ContactList  ===============================
+
+  // ==========================  ContactList  ===============================
 
   render() {
+    const { name } = this.state;
+    const { id } = uuidv4;
+    const contacts = this.state;
+
     return (
       <>
         <h1 className="title">Phonebook</h1>
@@ -73,6 +82,14 @@ class App extends Component {
             </label>
             <button type="submit">Add contact</button>
           </form>
+        </div>
+        <h1 className="title">Contacts</h1>
+        <div contacts={contacts}>
+          <ul>
+            <li key={id}>
+              <span>{name} </span>
+            </li>
+          </ul>
         </div>
       </>
     );
