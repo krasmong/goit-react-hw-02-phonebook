@@ -1,5 +1,6 @@
+import { number } from 'prop-types';
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 import './App.css';
@@ -15,16 +16,16 @@ class App extends Component {
 
   // ==========================  ContactForm ====================
 
-  // static defaultProps = {
-  //   name: '',
-  //   number: '',
-  // };
+  static defaultProps = {
+    name: '',
+    // number: '',
+  };
 
-  // static PropTypes = {
-  //   contacts: PropTypes.array
-  //   name: PropTypes.string,
-  //   number: PropTypes.string,
-  // };
+  static propTypes = {
+    contacts: PropTypes.array,
+    name: PropTypes.string,
+    // number: PropTypes.string,
+  };
 
   state = {
     contacts: [],
@@ -43,10 +44,10 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`handleSubmit: ${this.state.name}`);
+    console.log(`handleSubmit: ${this.state}`);
 
     this.props.onSubmit(this.state.contacts);
-    // this.props.OnSaveContacts(this.state.name);
+    // this.props.OnSaveContacts(this.state);
     this.reset();
   };
 
@@ -84,10 +85,12 @@ class App extends Component {
           </form>
         </div>
         <h1 className="title">Contacts</h1>
-        <div contacts={contacts}>
+
+        <div OnSaveContacts={contacts}>
           <ul>
             <li key={id}>
-              <span>{name} </span>
+              <span>{name}:</span>
+              <span>{number}</span>
             </li>
           </ul>
         </div>
