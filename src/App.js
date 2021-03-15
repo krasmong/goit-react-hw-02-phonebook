@@ -1,6 +1,5 @@
-import { number } from 'prop-types';
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 import './App.css';
@@ -16,16 +15,16 @@ class App extends Component {
 
   // ==========================  ContactForm ====================
 
-  static defaultProps = {
-    name: '',
-    // number: '',
-  };
+  // static defaultProps = {
+  //   name: '',
+  //   // number: '',
+  // };
 
-  static propTypes = {
-    contacts: PropTypes.array,
-    name: PropTypes.string,
-    // number: PropTypes.string,
-  };
+  // static propTypes = {
+  //   contacts: PropTypes.array,
+  //   name: PropTypes.string,
+  //   // number: PropTypes.string,
+  // };
 
   state = {
     contacts: [],
@@ -35,19 +34,22 @@ class App extends Component {
   numberInputId = uuidv4();
 
   handleChange = (e) => {
-    const { name, value } = e.currentTarget;
-    this.setState({
-      [name]: value,
-    });
+    console.log(e.currentTarget.value);
+    this.setState({ name: e.currentTarget.value });
+    // const { name, value } = e.currentTarget;
+    // this.setState({
+    //   [name]: value,
+    // });
     // console.log(`handleChange: ${this.state.name}`);
   };
 
   handleSubmit = (e) => {
-    e.preventDefault();
+    console.log(e);
+    // e.preventDefault();
     console.log(`handleSubmit: ${this.state}`);
 
-    this.props.onSubmit(this.state.contacts);
-    // this.props.OnSaveContacts(this.state);
+    // this.props.onSubmit(this.state.contacts);
+    // this.props.OnSaveContacts(this.state.);
     this.reset();
   };
 
@@ -62,9 +64,9 @@ class App extends Component {
   // ==========================  ContactList  ===============================
 
   render() {
-    const { name } = this.state;
-    const { id } = uuidv4;
-    const contacts = this.state;
+    // const { name } = this.state;
+    // const { id } = uuidv4;
+    // const contacts = this.state;
 
     return (
       <>
@@ -86,14 +88,14 @@ class App extends Component {
         </div>
         <h1 className="title">Contacts</h1>
 
-        <div OnSaveContacts={contacts}>
+        {/* <div contacts={contacts}>
           <ul>
             <li key={id}>
               <span>{name}:</span>
               <span>{number}</span>
             </li>
           </ul>
-        </div>
+        </div> */}
       </>
     );
   }
