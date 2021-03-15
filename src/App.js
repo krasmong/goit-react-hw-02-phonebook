@@ -29,18 +29,18 @@ class App extends Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
   nameInputId = uuidv4();
   numberInputId = uuidv4();
 
   handleChange = (e) => {
-    console.log(e.currentTarget.value);
-    this.setState({ name: e.currentTarget.value });
-    // const { name, value } = e.currentTarget;
-    // this.setState({
-    //   [name]: value,
-    // });
-    // console.log(`handleChange: ${this.state.name}`);
+    // console.log(e.currentTarget);
+    // console.log(e.currentTarget.name);
+    // console.log(e.currentTarget.value);
+    const { name, value } = e.currentTarget;
+
+    this.setState({ [name]: value });
   };
 
   handleSubmit = (e) => {
@@ -83,7 +83,17 @@ class App extends Component {
                 id={this.nameInputId}
               />
             </label>
-            <button type="submit">Add contact</button>
+            <label htmlFor={this.nameInputId}>
+              Number
+              <input
+                type="text"
+                name="number"
+                value={this.state.number}
+                onChange={this.handleChange}
+                id={this.nameInputId}
+              />
+            </label>
+            {/* <button type="submit">Add contact</button> */}
           </form>
         </div>
         <h1 className="title">Contacts</h1>
