@@ -1,0 +1,38 @@
+.container {
+  width: 300px;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.label {
+  font-size: 20px;
+}
+
+.input {
+  width: 300px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: 5px 0;
+}
+
+.btn {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 8px 16px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 14px;
+  margin: 4px 2px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(36, 124, 206);
+  color: white;
+}
