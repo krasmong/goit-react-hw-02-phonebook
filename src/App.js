@@ -36,11 +36,11 @@ class App extends Component {
   };
 
   formSubmitHandler = (data) => {
-    console.log(data);
+    // console.log(data);
 
     const myContacts = {
       id: uuidv4(),
-      name: data.neme,
+      name: data.name,
       number: data.number,
     };
 
@@ -51,10 +51,8 @@ class App extends Component {
     });
   };
 
-  // ==========================  ContactForm  ===============================
-
   render() {
-    const contacts = this.state;
+    const { contacts } = this.state;
 
     return (
       <>
