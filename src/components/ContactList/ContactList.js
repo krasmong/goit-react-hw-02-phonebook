@@ -1,15 +1,15 @@
 import React from 'react';
 
-// import s from '../ContactList/ContactList.module.css';
+import s from '../ContactList/ContactList.module.css';
 
 const ContactList = ({ contacts }) => {
   console.log(contacts);
 
   return (
     <>
-      <ul>
+      <ul className={s.list}>
         {contacts.map(({ id, name, number }) => (
-          <li key={id}>
+          <li className={s.item} key={id}>
             <span> {name} : </span>
             <span> {number} </span>
 
