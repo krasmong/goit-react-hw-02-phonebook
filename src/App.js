@@ -3,22 +3,28 @@ import ContactForm from './components/ContactForm/ContactForm';
 
 import ContactList from './components/ContactList/ContactList';
 
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { v4 as uuidv4 } from 'uuid';
 
 import './App.css';
 
 class App extends Component {
-  // formSubmitHendler = (data) => {
-  //   console.log(data);
-  //   const myContacts = {
-  //     name: data.name,
-  //     number: data.number,
-  //   };
-  // };
+  static defaultProps = {
+    contacts: [],
+    name: '',
+    number: '',
+  };
 
-  // ==========================  ContactForm ====================
+  static propTypes = {
+    contacts: PropTypes.objectOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string,
+        number: PropTypes.string,
+      }),
+    ),
+  };
 
   state = {
     contacts: [
@@ -29,9 +35,6 @@ class App extends Component {
     ],
   };
 
-  // nameInputId = uuidv4();
-  // numberInputId = uuidv4();
-
   formSubmitHandler = (data) => {
     console.log(data);
 
@@ -41,9 +44,11 @@ class App extends Component {
       number: data.number,
     };
 
-    this.setState((prevState) => ({
-      contacts: [myContacts, ...prevState.contacts],
-    }));
+    this.setState((prevState) => {
+      return {
+        contacts: [...prevState.contacts, myContacts],
+      };
+    });
   };
 
   // ==========================  ContactForm  ===============================
@@ -54,12 +59,22 @@ class App extends Component {
     return (
       <>
         <h1 className="title">Phonebook</h1>
-        <ContactForm onSubmit={this.formSubmitHandler} />
+        <ContactForm OnSaveContacts={this.formSubmitHandler} />
         <h2 className="title">Contacts</h2>
         <ContactList contacts={contacts} />
       </>
     );
   }
 }
+
+App.propTypes = {
+  contacts: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string,
+      number: PropTypes.string,
+    }),
+  ),
+};
 
 export default App;
