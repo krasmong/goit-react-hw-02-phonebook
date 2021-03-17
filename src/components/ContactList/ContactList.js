@@ -1,6 +1,7 @@
 import React from 'react';
+import s from './ContactList.module.css';
 
-import s from '../ContactList/ContactList.module.css';
+// import s from '../ContactList/ContactList.module.css';
 
 const ContactList = ({ contacts }) => {
   console.log(contacts);

@@ -17,7 +17,7 @@ class App extends Component {
   };
 
   static propTypes = {
-    contacts: PropTypes.objectOf(
+    contacts: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string,
@@ -33,6 +33,7 @@ class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
+    filter: '',
   };
 
   formSubmitHandler = (data) => {
@@ -64,15 +65,5 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  contacts: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    }),
-  ),
-};
 
 export default App;
