@@ -2,12 +2,11 @@ import React from 'react';
 
 // import s from './Filter.module.css';
 
-const Filter = ({}) => (
-  <>
-    <label htmlFor="">
-      <input type="text"></input>
-    </label>
-  </>
+const Filter = ({ value, onChange }) => (
+  <label>
+    Find contacts by name
+    <input type="text" value={value} onChange={onChange} />
+  </label>
 );
 
-// exports default Filter;
+export default Filter;

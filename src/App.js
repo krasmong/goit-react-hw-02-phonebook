@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import ContactForm from './components/ContactForm/ContactForm';
-
-import ContactList from './components/ContactList/ContactList';
-
 import PropTypes from 'prop-types';
+import ContactForm from './components/ContactForm/ContactForm';
+import Filter from './components/Filter/Filter';
+import ContactList from './components/ContactList/ContactList';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -36,30 +35,34 @@ class App extends Component {
     filter: '',
   };
 
-  formSubmitHandler = (data) => {
-    // console.log(data);
-
+  formSubmitHandler = data => {
     const myContacts = {
       id: uuidv4(),
       name: data.name,
       number: data.number,
     };
 
-    this.setState((prevState) => {
+    this.setState(prevState => {
       return {
         contacts: [...prevState.contacts, myContacts],
       };
     });
   };
 
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
 
     return (
       <>
         <h1 className="title">Phonebook</h1>
         <ContactForm OnSaveContacts={this.formSubmitHandler} />
         <h2 className="title">Contacts</h2>
+        <Filter value={filter} onChange={this.changeFilter} />
+
         <ContactList contacts={contacts} />
       </>
     );
