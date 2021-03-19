@@ -53,6 +53,9 @@ class App extends Component {
     this.setState({ filter: e.currentTarget.value });
   };
 
+  //   https://www.youtube.com/watch?v=2tPxoJxaCes
+  // 1:27.00
+
   render() {
     const { contacts, filter } = this.state;
 
