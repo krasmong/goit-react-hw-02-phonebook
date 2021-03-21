@@ -3,7 +3,7 @@ import s from './ContactList.module.css';
 
 // import s from '../ContactList/ContactList.module.css';
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, onDeleteContact }) => {
   console.log(contacts);
 
   return (
@@ -11,10 +11,12 @@ const ContactList = ({ contacts }) => {
       <ul className={s.list}>
         {contacts.map(({ id, name, number }) => (
           <li className={s.item} key={id}>
-            <span> {name} : </span>
-            <span> {number} </span>
+            <span className={s.text}> {name} : </span>
+            <span className={s.text}> {number} </span>
 
-            <button>Delete</button>
+            <button className={s.btn} onClick={() => onDeleteContact(id)}>
+              Delete
+            </button>
           </li>
         ))}
       </ul>
