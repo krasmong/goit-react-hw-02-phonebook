@@ -4,8 +4,13 @@ import React from 'react';
 
 const Filter = ({ value, onChange }) => (
   <label>
-    Find contacts by name
-    <input type="text" value={value} onChange={onChange} />
+    {/* Find contacts by name: */}
+    <input
+      type="text"
+      value={value}
+      onChange={onChange}
+      placeholder="Find contacts by name"
+    />
   </label>
 );
 

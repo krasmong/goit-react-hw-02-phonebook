@@ -48,16 +48,36 @@ class App extends Component {
       };
     });
   };
+  // ==================== Filter =================================
+
+  //   https://www.youtube.com/watch?v=2tPxoJxaCes
+  // 1:27.00
 
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
   };
 
-  //   https://www.youtube.com/watch?v=2tPxoJxaCes
-  // 1:27.00
+  getFiltredContacts = () => {
+    const { filter, contacts } = this.state;
+
+    const normalizedFilter = this.state.filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter),
+    );
+  };
 
   render() {
     const { contacts, filter } = this.state;
+
+    // const contacts = this.filtredContacts();
+
+    // берем фтльтр и на базе стейта
+    // составляем и рисуем новую коллекцию
+
+    const filtredContacts = this.getFiltredContacts();
+    // возвращаем только те контакты, свойство "name", которых
+    // включает в себя текущее значение фильтра
 
     return (
       <>
@@ -66,7 +86,7 @@ class App extends Component {
         <h2 className="title">Contacts</h2>
         <Filter value={filter} onChange={this.changeFilter} />
 
-        <ContactList contacts={contacts} />
+        <ContactList contacts={filtredContacts} />
       </>
     );
   }
